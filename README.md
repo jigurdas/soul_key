@@ -1,2 +1,2 @@
 # soul_key
-coloboration with https://github.com/pythonproga
+Coloboration with https://github.com/pythonproga

@@ -10,7 +10,6 @@ bot = telebot.TeleBot("Token")
 ID: int =#you telegram id
 
 
-
 @bot.message_handler(commands=['start', 'help'])
 def start(message):
     if message.chat.id == ID:
@@ -135,6 +134,7 @@ def func(message):
         elif message.text == "Назад":
             start(message)
 
+###########################################################################
 
 @bot.callback_query_handler(lambda callback: callback.data)
 def check(callback):
@@ -144,11 +144,15 @@ def check(callback):
         move_cur = False
         bot.delete_message(ID, callback.message.message_id)
 
+###########################################################################
+
     elif callback.data == "clickl1":
         x, y = pyautogui.position()
         pyautogui.leftClick(x, y)
         bot.delete_message(ID, callback.message.message_id)
         bot.send_message(ID, "Клавіша натиснута")
+
+###########################################################################
 
     elif callback.data == "clickl2":
         x, y = pyautogui.position()
@@ -157,14 +161,20 @@ def check(callback):
         bot.delete_message(ID, callback.message.message_id)
         bot.send_message(ID, "Клавіша натиснута")
 
+###########################################################################
+
     elif callback.data == "clickr1":
         x, y = pyautogui.position()
         pyautogui.rightClick(x, y)
         bot.delete_message(ID, callback.message.message_id)
         bot.send_message(ID, "Клавіша натиснута")
 
+###########################################################################
+
     elif callback.data == "back2":
         bot.delete_message(ID, callback.message.message_id)
+
+###########################################################################
 
     elif callback.data == "back3":
         global start_cod

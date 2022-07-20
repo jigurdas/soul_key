@@ -7,6 +7,7 @@ import uuid
 import re
 import sys
 
+
 def get_size(bytes, suffix="B"):
     """
     Scale bytes to its proper format

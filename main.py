@@ -6,8 +6,8 @@ import os
 import time
 import pyautogui
 
-bot = telebot.TeleBot("5377433922:AAG4QIoFIbtv587e4QJ9a7bo1AKtB4zxK6I")
-ID: int = 886293441
+bot = telebot.TeleBot("TOKEN")
+ID: int = #YOR TG ID
 
 
 @bot.message_handler(commands=['start', 'help'])

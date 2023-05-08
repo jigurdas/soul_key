@@ -23,8 +23,8 @@ import pyautogui
 #winreg.CloseKey(key)
 
 
-bot = telebot.TeleBot("TOKEN")
-ID: int = #YOR TG ID
+bot = telebot.TeleBot("telegramToken")
+ID: int = #YOR telegram ID
 
 bot.send_message(ID, "🟢ОНЛАЙН🟢")
 

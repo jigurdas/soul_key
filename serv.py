@@ -9,7 +9,7 @@ camera = cv2.VideoCapture(0)
 ngrok_url = None
 
 try:
-    tunnel = ngrok.connect(5000, auth_token='2G29TJtewWZ1xkU8Yp3B57MTFNA_6M79h2HjixeRcjU9f88C5')
+    tunnel = ngrok.connect(5000, auth_token='ngrokToken')
     ngrok_url = tunnel.public_url.replace("https", "http")
     atexit.register(lambda: ngrok.disconnect(tunnel.public_url))
     print(" * Ngrok Tunnel:", ngrok_url)

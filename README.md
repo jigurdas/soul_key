@@ -75,7 +75,7 @@ By using this software, you automatically agree to the above.
 # :moneybag: Donate:
 **BTC:** `33UWLty7noTMDt6XbEuvNTWSviVPM8ggHj`  
 **ETH:** `0xA0Ee5627BE3EB833Cd6E6d2437c2E4C9dAB67e9E`  
-**MATIC:** `0xA0Ee5627BE3EB833Cd6E6d2437c2E4C9dAB67e9E`
+**MATIC:** `0xA0Ee5627BE3EB833Cd6E6d2437c2E4C9dAB67e9E`  
 **SOLANA:** `9Xk3QKf1RiaKwQcapVXBkTtC8MHfauWaKDTp1kVYD4VY`
 
 ***

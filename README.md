@@ -1,7 +1,7 @@
 <p align="center">
   <img src="images/logo.png"> <br>
   <b>Stealer + Clipper + Keylogger</b> <br>
-  <i>Stealer written on C#, logs will be sent to Telegram bot.</i>
+  <i>Stealer written on Python, logs will be sent to Telegram bot.</i>
 </p>
 
 ***
@@ -73,9 +73,10 @@ By using this software, you automatically agree to the above.
 ***
 
 # :moneybag: Donate:
-**BTC:** `1GvEsEEdD8kfbSia6QR3Hk1G4fzy2mwZE4`  
-**ETH:** `0x4f62ce9632efF28f175aAAdd58B14A0AC053A952`  
-**XMR:** `487sRQv2gBXHVPc59Lkz5j7bgJ28Qy8nPW6hUvRyFWxM84cWzEnmVcWf6MWEQ59BwrP4viyoz6gfqhDPb1yiUx2SUViKVwd`  
+**BTC:** `33UWLty7noTMDt6XbEuvNTWSviVPM8ggHj`  
+**ETH:** `0xA0Ee5627BE3EB833Cd6E6d2437c2E4C9dAB67e9E`  
+**MATIC:** `0xA0Ee5627BE3EB833Cd6E6d2437c2E4C9dAB67e9E`
+**SOLANA:** `9Xk3QKf1RiaKwQcapVXBkTtC8MHfauWaKDTp1kVYD4VY`
 
 ***
 

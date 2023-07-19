@@ -24,7 +24,7 @@ By using this software, you automatically agree to the above.
 - [x] File grabber (Documents, Images, Source codes, Databases, USB)
 - [x] Detect banking & cryptocurrency services in browsers
 - [x] Steam, Uplay, Battle.Net, Minecraft session
-- [x] Install keylogger & clipper
+- [x] Keylogger & clipper
 - [x] Desktop & Webcam screenshot
 - [x] ProtonVPN, OpenVPN, NordVPN
 - [x] Cryptocurrency Wallets

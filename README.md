@@ -45,8 +45,8 @@ By using this software, you automatically agree to the above.
 > These functions will become available in the builder only if you have autorun enabled.
 * **:musical_keyboard: Keylogger:**
   * The keylogger will turn on if the user is texting in the chat or using the bank's website.
-[* **:clipboard: Clipper:**
-  * Clipper turns on and replaces crypto wallet addresses in the clipboard when a user makes a transaction.]: #
+* **:clipboard: Clipper:**
+  * Clipper turns on and replaces crypto wallet addresses in the clipboard when a user makes a transaction.
 * **:camera: Webcam screenshots:**
   * Webcam screenshots will be taken if the user is watching something obscene on the Internet.
 

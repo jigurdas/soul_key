@@ -5,7 +5,7 @@
 </p>
 
 ***
-
+ 
 # :construction: Disclaimer
 I, the creator, am not responsible for any actions, and or damages, caused by this software.
 You bear the full responsibility of your actions and acknowledge that this software was created for educational purposes only.

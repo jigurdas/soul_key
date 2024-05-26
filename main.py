@@ -23,8 +23,8 @@ import pyautogui
 #winreg.CloseKey(key)
 
 
-bot = telebot.TeleBot("5377433922:AAG4QIoFIbtv587e4QJ9a7bo1AKtB4zxK6I")
-ID: int = 886293441 #886293441 886293441 1110656480
+bot = telebot.TeleBot("TELEGRAM BOT ID")
+ID: int = ID
 
 bot.send_message(ID, "🟢ОНЛАЙН🟢")
 

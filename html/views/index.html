@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Video Stream</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='../css/static/style.css') }}">
+  </head>
+  <body>
+    <div>
+      <h1>Video Stream</h1>
+      <img src="{{ url_for('video_feed') }}">
+    </div>
+    <div>
+      <h1>Audio Stream</h1>
+      <audio controls autoplay>
+        <source src="{{ url_for('audio') }}" type="audio/x-wav;codec=pcm" >
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  </body>
+</html>

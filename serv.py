@@ -8,7 +8,7 @@ app = Flask(__name__, template_folder='html/views')
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 camera = cv2.VideoCapture(0)
 ngrok_url = None
-ngrok.set_auth_token('2h1I4PTW5Z8eLhcIa2FJIMXfbp3_3V5M61u9HaGQyxj4EL32x')
+ngrok.set_auth_token('NGROK TOKEN')
 
 FORMAT=pyaudio.paInt16
 CHANNELS=2
